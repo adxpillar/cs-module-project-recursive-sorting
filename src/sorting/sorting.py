@@ -8,7 +8,7 @@ def merge(arrA, arrB):
     # loop through combined array 
     # compare values and increment pointers
 
-    for i in range(0,merged_arr):
+    for i in range(len(merged_arr)):
         # check position of pointers
         # copy p1 array into p2 array if out of bounds
         if p1 >= len(arrA):
@@ -27,51 +27,53 @@ def merge(arrA, arrB):
     return merged_arr
 
 
-
-
-
 # # TO-DO: implement the Merge Sort function below recursively
 def merge_sort(arr):
     # Your code here
 
+    if len(arr) > 1:
+        leftside = merge_sort(arr[0:len(arr)//2])
+        rightside = merge_sort(arr[len(arr)//2:])
+
+        arr = merge(leftside,rightside)
 
     return arr
 
 
-def merge_sort(alist):
+# def merge_sort(alist):
 
-    if len(alist)>1:
-        mid = len(alist)//2
-        lefthalf = alist[:mid]
-        righthalf = alist[mid:]
+#     if len(alist)>1:
+#         mid = len(alist)//2
+#         lefthalf = alist[:mid]
+#         righthalf = alist[mid:]
 
-        merge_sort(lefthalf)
-        merge_sort(righthalf)
+#         merge_sort(lefthalf)
+#         merge_sort(righthalf)
 
-        i=0
-        j=0
-        k=0
-        while i < len(lefthalf) and j < len(righthalf):
+#         i=0
+#         j=0
+#         k=0
+#         while i < len(lefthalf) and j < len(righthalf):
             
-            if lefthalf[i] <= righthalf[j]:
-                alist[k]=lefthalf[i]
-                i=i+1
-            else:
-                alist[k]=righthalf[j]
-                j=j+1
-            k=k+1
+#             if lefthalf[i] <= righthalf[j]:
+#                 alist[k]=lefthalf[i]
+#                 i=i+1
+#             else:
+#                 alist[k]=righthalf[j]
+#                 j=j+1
+#             k=k+1
 
-        while i < len(lefthalf):
-            alist[k]=lefthalf[i]
-            i=i+1
-            k=k+1
+#         while i < len(lefthalf):
+#             alist[k]=lefthalf[i]
+#             i=i+1
+#             k=k+1
 
-        while j < len(righthalf):
-            alist[k]=righthalf[j]
-            j=j+1
-            k=k+1
+#         while j < len(righthalf):
+#             alist[k]=righthalf[j]
+#             j=j+1
+#             k=k+1
 
-    return alist
+#     return alist
 
 # # STRETCH: implement the recursive logic for merge sort in a way that doesn't 
 # # utilize any extra memory
